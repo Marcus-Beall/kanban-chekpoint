@@ -1,11 +1,12 @@
 <template>
-  
+  <div class="list">
+    {{listId}}</div>
 </template>
 
 <script>
-export default {
-  name: 'List'
-}
+  export default {
+    name: 'list'
+  }
 </script>
 
 <style scoped>

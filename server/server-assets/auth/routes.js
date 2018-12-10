@@ -12,7 +12,7 @@ router.post('/auth/register', (req, res) => {
   //VALIDATE PASSWORD LENGTH
   if (req.body.password.length < 5) {
     return res.status(400).send({
-      error: 'Password must be at least 6 characters'
+      error: 'Password must be at least 5 characters'
     })
   }
   //CHANGE THE PASSWORD TO A HASHED PASSWORD

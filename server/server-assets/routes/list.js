@@ -5,7 +5,7 @@ let Comments = require('../models/comment')
 
 //GET
 router.get('/', (req, res, next) => {
-  Lists.find({ listId: req.params.id })
+  Lists.find({})
     .then(data => {
       res.send(data)
     })
