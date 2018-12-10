@@ -17,6 +17,12 @@ let api = Axios.create({
   withCredentials: true
 })
 
+// let boardApi = Axios.create({
+//   baseURL: "//localhost:3000/api/" + this.$route.params.boardId,
+//   timeout: 3000,
+//   withCredentials: true
+// })
+
 export default new Vuex.Store({
   state: {
     user: {},
@@ -99,6 +105,20 @@ export default new Vuex.Store({
       api.post('lists/' + listData.boardId, listData)
         .then(lists => {
           dispatch('getLists', listData.boardId)
+        })
+    },
+    deleteList({ commit, dispatch }, list) {
+      api.delete('lists/' + list.boardId + '/' + list.id)
+        .then(res => {
+          dispatch('getLists')
+        })
+    },
+
+    //Tasks
+    addTask({ commit, dispatch }, taskData) {
+      api.post('task/' + taskData.listId, taskData)
+        .then(tasks => {
+          dispatch('getTasks', taskData.listId)
         })
     }
   }

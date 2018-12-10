@@ -1,11 +1,11 @@
 <template>
-  <div class="list">
+  <div class="task">
     {{taskId}}</div>
 </template>
 
 <script>
   export default {
-    name: 'list'
+    name: 'task'
   }
 </script>
 
