@@ -1,12 +1,12 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
-let schemaName = 'List'
+let schemaName = 'Comment'
 
 
 let schema = new Schema({
   title: { type: String, required: true },
-  boardId: { type: ObjectId, ref: 'Board', required: true }
+  taskId: { type: ObjectId, ref: 'Task', required: true }
 })
 
 

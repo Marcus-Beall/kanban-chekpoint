@@ -1,7 +1,10 @@
 var mongoose = require('mongoose')
-var connectionString = 'mongodb://student:student@ds151207.mlab.com:51207/bcw-junk'
+var connectionString = 'mongodb://student:student1@ds016298.mlab.com:16298/kanbanboard'
 var connection = mongoose.connection
 
+//mlab login
+//username Alan Butcher
+//password student1
 
 mongoose.connect(connectionString, { useMongoClient: true })
 
