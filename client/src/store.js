@@ -44,7 +44,8 @@ export default new Vuex.Store({
     setActiveBoard(state, boardId) {
       console.log(boardId)
       state.activeBoard = boardId
-    }
+    },
+    getTasks()
   },
   actions: {
     //AUTH STUFF
