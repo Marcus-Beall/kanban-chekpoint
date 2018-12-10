@@ -4,8 +4,11 @@
     <form @submit.prevent="addList">
       <input type="text" placeholder="title" v-model="newList.title" required>
       <button type="submit">Create List</button>
-      <list v-for="list in lists" :boardId="newList.boardId"></list>
     </form>
+        <list v-for="list in lists" :key="list._id" :listId="list._id" :title="list.title">
+          
+          
+        </list>
   </div>
 </template>
 
@@ -43,6 +46,7 @@
       }
     },
     props: ["boardId"],
+    
     components: {
       List
     }

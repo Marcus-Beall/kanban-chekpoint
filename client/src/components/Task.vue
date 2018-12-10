@@ -1,12 +1,10 @@
 <template>
   <div class="list">
-<p>{{title}}</p>    
-  </div>
+    {{taskId}}</div>
 </template>
 
 <script>
   export default {
-    props: ["listId", "title"],
     name: 'list'
   }
 </script>
