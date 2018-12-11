@@ -5,10 +5,10 @@
       <input type="text" placeholder="title" v-model="newList.title" required>
       <button type="submit">Create List</button>
     </form>
-        <list v-for="list in lists" :key="list._id" :listId="list._id" :title="list.title">
-          
-          
-        </list>
+    <list v-for="list in lists" :key="list._id" :listId="list._id" :boardId="list.boardId" :title="list.title">
+
+
+    </list>
   </div>
 </template>
 
@@ -20,7 +20,8 @@
       return {
         newList: {
           title: "",
-          boardId: this.boardId
+          boardId: this.boardId,
+          authorId: this.$store.state.user._id
         },
 
       };
@@ -42,11 +43,11 @@
     methods: {
       addList() {
         this.$store.dispatch("addList", this.newList);
-        this.newList = { title: "", boardId: this.boardId };
+        this.newList = { title: "", boardId: this.boardId, authorId: this.$store.state.user._id };
       }
     },
     props: ["boardId"],
-    
+
     components: {
       List
     }

@@ -53,6 +53,9 @@ router.put('/:id', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   Lists.findById(req.params.id)
     .then(list => {
+      if (!list.authorId.equals(req.session.uid)) {
+        return res.status(401).send("ACCESS DENIED!")
+      }
       list.remove(err => {
         if (err) {
           console.log(err)

@@ -8,7 +8,7 @@
     </form>
     <div v-for="board in boards" :key="board._id">
       <router-link :to="{name: 'board', params: {boardId: board._id}}" @click="setBoard(board._id)">{{board.title}}</router-link>
-      <button @click="deleteBoard(board._id)">DELETE BOARD</button>
+      <button @click="deleteBoard(board)">DELETE BOARD</button>
     </div>
   </div>
 </template>
@@ -43,8 +43,10 @@
         this.$store.dispatch("addBoard", this.newBoard);
         this.newBoard = { title: "", description: "" };
       },
-      deleteBoard(boardId) {
-        this.$store.dispatch("deleteBoard", boardId);
+      deleteBoard(board) {
+        if (this.$store.state.user._id == board.authorId) {
+          this.$store.dispatch("deleteBoard", board.id);
+        }
       },
       setBoard(boardId) {
         this.$store.dispatch('setBoard', boardId)

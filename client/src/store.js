@@ -13,7 +13,7 @@ let auth = Axios.create({
 
 let api = Axios.create({
   baseURL: "//localhost:3000/api/",
-  timeout: 3000,
+  timeout: 5000,
   withCredentials: true
 })
 
@@ -29,7 +29,8 @@ export default new Vuex.Store({
     boards: [],
     activeBoard: '',
     lists: [],
-    boardId: ''
+    boardId: '',
+    tasks: {}
   },
   mutations: {
     setUser(state, user) {
@@ -42,10 +43,15 @@ export default new Vuex.Store({
       state.lists = lists
     },
     setActiveBoard(state, boardId) {
-      console.log(boardId)
       state.activeBoard = boardId
     },
-    getTasks()
+    setTasks(state, tasks) {
+      state.tasks = tasks
+    },
+    makeComment(state, task) {
+      let index = state.tasks[task.listId].findIndex(t => t._id == task._id)
+      state.tasks[task.listId][index] = task
+    }
   },
   actions: {
     //AUTH STUFF
@@ -117,9 +123,42 @@ export default new Vuex.Store({
 
     //Tasks
     addTask({ commit, dispatch }, taskData) {
-      api.post('task/' + taskData.listId, taskData)
+      api.post('tasks/' + taskData.boardId, taskData)
         .then(tasks => {
-          dispatch('getTasks', taskData.listId)
+          dispatch('getTasks', taskData.boardId)
+        })
+    },
+    getTasks({ commit, dispatch }, boardId) {
+      let dict = {}
+      api.get('tasks/' + boardId)
+        .then(tasks => {
+          console.log(tasks)
+          tasks.data.forEach(task => {
+            if (!dict[task.listId]) {
+              dict[task.listId] = []
+            }
+            dict[task.listId].push(task)
+          })
+          console.log(dict)
+          commit('setTasks', dict)
+        })
+    },
+    deleteTask({ commit, dispatch }, task) {
+      api.delete('/tasks/' + task.boardId + '/' + task.id)
+        .then(res =>
+          dispatch('getTasks', task.boardId))
+    },
+    moveTask({ commit, dispatch }, task) {
+      api.put('/tasks/' + task.boardId + '/' + task.id + '/move', task)
+        .then(res =>
+          dispatch('getTasks', task.boardId))
+    },
+
+    //Comments
+    makeComment({ commit, dispatch }, comment) {
+      api.post('/tasks/' + comment.boardId + '/' + comment.taskId + '/comment', comment)
+        .then(res => {
+          commit('makeComment', res.data)
         })
     }
   }

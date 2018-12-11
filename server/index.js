@@ -46,7 +46,7 @@ server.use('/api/boards', boardRoutes)
 let listRoutes = require('./server-assets/routes/list')
 server.use('/api/lists/:boardId', listRoutes)
 let taskRoutes = require('./server-assets/routes/task')
-server.use('/api/tasks/:listId', taskRoutes)
+server.use('/api/tasks/:boardId', taskRoutes)
 
 
 
