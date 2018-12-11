@@ -76,6 +76,13 @@ export default new Vuex.Store({
           router.push({ name: 'boards' })
         })
     },
+    logout({ commit, dispatch }) {
+      auth.delete('logout')
+        .then(res => {
+          let user = {}
+          commit('setUser', user)
+        })
+    },
 
     //BOARDS
     getBoards({ commit, dispatch }) {

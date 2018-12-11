@@ -9,8 +9,12 @@
                 <h5 class="modal-title">Login</h5>
               </div>
               <div class="modal-body">
-                <input type="email" v-model="creds.email" placeholder="email">
-                <input type="password" v-model="creds.password" placeholder="password">
+                <div class="col-12">
+                  <input type="email" v-model="creds.email" placeholder="email">
+                </div>
+                <div class="col-12">
+                  <input type="password" v-model="creds.password" placeholder="password">
+                </div>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -20,9 +24,15 @@
                 </button>
               </div>
               <div class="modal-body">
-                <input type="text" v-model="newUser.name" placeholder="name">
-                <input type="email" v-model="creds.email" placeholder="email">
-                <input type="password" v-model="creds.password" placeholder="password">
+                <div class="col-12">
+                  <input type="text" v-model="newUser.name" placeholder="name">
+                </div>
+                <div class="col-12">
+                  <input type="email" v-model="creds.email" placeholder="email">
+                </div>
+                <div class="col-12">
+                  <input type="password" v-model="creds.password" placeholder="password">
+                </div>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
