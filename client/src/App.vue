@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <div v-if="loggedin">
-      <button @click="logout" class="btn btn-primary my-2 my-sm-0" type="button">Logout</button>
-    </div>
     <router-view />
   </div>
 </template>
@@ -10,9 +7,6 @@
 <script>
   export default {
     methods: {
-      logout() {
-        this.$store.dispatch('logout')
-      },
       loggedin() {
         if (this.$store.state.user != {}) {
           return true

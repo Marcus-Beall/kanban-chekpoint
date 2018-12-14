@@ -42,8 +42,8 @@ export default new Vuex.Store({
     setLists(state, lists) {
       state.lists = lists
     },
-    setActiveBoard(state, boardId) {
-      state.activeBoard = boardId
+    setActiveBoard(state, board) {
+      state.activeBoard = board
     },
     setTasks(state, tasks) {
       state.tasks = tasks
@@ -81,6 +81,7 @@ export default new Vuex.Store({
         .then(res => {
           let user = {}
           commit('setUser', user)
+          router.push({ name: 'login' })
         })
     },
 
