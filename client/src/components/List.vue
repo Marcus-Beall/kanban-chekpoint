@@ -1,5 +1,5 @@
 <template>
-  <div class="list justify-content-center">
+  <drop @drop="moveTask" class="list justify-content-center">
     <div class="card jarvisCard mb-3 justify-content-center" style="max-width: 20rem;">
       <div class="card-header justify-content-around" style="font-family: 'Share Tech Mono', monospace; color:#1B4E5F; max-width: 20rem;">
         <div class="col">
@@ -22,18 +22,20 @@
       <div class="card-body">
         <div v-for="(value,key) in tasks" :key="key">
           <div v-for="task in value" :key="task._id" v-if="task.listId == listId">
-            <task :taskId="task._id" :boardId="task.boardId" :title="task.title" :authorId="task.authorId" :comments="task.comments"></task>
+            <task :taskId="task._id" :boardId="task.boardId" :title="task.title" :authorId="task.authorId" :comments="task.comments"
+              :listId="listId"></task>
           </div>
         </div>
       </div>
     </div>
-    <p></p>
+  </drop>
   </div>
 </template>
 <script>
   import Task from '@/components/Task.vue'
+  import { Drag, Drop } from 'vue-drag-drop';
   export default {
-    props: ["listId", "title", "boardId"],
+    props: ["listId", "title", "boardId", "newListId"],
     name: 'list',
     data() {
       return {
@@ -70,10 +72,22 @@
       titleCase(title) {
         return title.toUpperCase()
       },
+      moveTask(data) {
+        let dragTask = {
+          id: data.taskId,
+          oldList: data.listId,
+          authorId: data.authorId,
+          listId: this.listId,
+          boardId: this.boardId
+        }
+        this.$store.dispatch('moveTask', dragTask)
+      }
     },
 
     components: {
-      Task
+      Task,
+      Drag,
+      Drop
     }
   }
 </script>
