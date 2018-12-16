@@ -166,6 +166,7 @@ export default new Vuex.Store({
         .then(res => {
           commit('makeComment', res.data)
         })
+      dispatch('getTasks', comment.boardId)
     }
   }
 }) 
