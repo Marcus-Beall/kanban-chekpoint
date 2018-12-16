@@ -24,7 +24,7 @@
         <input class="form-control boarddrop my-2 mr-sm-2" type="text" style="font-family: 'Share Tech Mono', monospace; color:#1B4E5F;"
           v-model="newComment.title" placeholder="">
         <button class="btn boarddrop my-2 my-sm-0" style="font-family: 'Share Tech Mono', monospace; color:#1B4E5F;"
-          type="submit" @click="makeComment(board, moveTaskId)">Comment</button></form>
+          type="submit" @click.prevent="makeComment(board, moveTaskId)">Comment</button></form>
       <div class="row my-3">
         <ul>
           <div class="col-12" v-for="comment in comments">

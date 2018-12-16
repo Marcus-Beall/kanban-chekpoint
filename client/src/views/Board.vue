@@ -1,5 +1,6 @@
 <template>
   <div class="board">
+    <div class="pic"></div>
     <dash :boardTitle="boardTitle"></dash>
     <form @submit.prevent="addList" class="mt-5">
       <input type="text" placeholder="title" class="mx-2" style="font-family: 'Share Tech Mono', monospace; color:#1B4E5F;"
@@ -41,6 +42,7 @@
       }
     },
     mounted() {
+
       this.$store.dispatch("getLists", this.boardId);
     },
     methods: {
@@ -58,14 +60,17 @@
 </script>
 
 <style>
-  .board {
+  .pic {
     height: 100vh;
     width: 100vw;
     overflow-y: hidden !important;
     overflow-x: hidden;
     background-image: url('https://camo.githubusercontent.com/896f4bcca05b40f1ea8f2f8f7db9e98b2fa402f1/687474703a2f2f692e696d6775722e636f6d2f785a38783945532e6a7067');
     background-size: cover;
-    background-position: center center
+    background-position: center center;
+    position: absolute;
+    z-index: -1;
+    background-attachment: fixed;
   }
 
   .listClass {

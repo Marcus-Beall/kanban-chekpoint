@@ -1,5 +1,6 @@
 <template>
   <div class="boards">
+    <div class="pic"></div>
     <dash></dash>
     <div class="container-fluid">
       <div class="row justify-content-center">
