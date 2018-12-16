@@ -162,8 +162,8 @@ export default new Vuex.Store({
       api.post('/tasks/' + comment.boardId + '/' + comment.taskId + '/comment', comment)
         .then(res => {
           commit('makeComment', res.data)
+          dispatch('getTasks', comment.boardId)
         })
-      dispatch('getTasks', comment.boardId)
     }
   }
 }) 
