@@ -67,7 +67,6 @@
       addTask() {
         this.$store.dispatch('addTask', this.newTask)
         let newTask = { title: "", listId: this.listId, boardId: this.boardId, authorId: this.$store.state.user._id }
-        console.log(newTask)
       },
       titleCase(title) {
         return title.toUpperCase()

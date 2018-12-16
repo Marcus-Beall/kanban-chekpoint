@@ -110,7 +110,6 @@ export default new Vuex.Store({
     getLists({ commit, dispatch }, boardId) {
       api.get('lists/' + boardId + '/' + boardId)
         .then(res => {
-          console.log(res.data)
           commit('setLists', res.data)
         })
     },
@@ -138,14 +137,12 @@ export default new Vuex.Store({
       let dict = {}
       api.get('tasks/' + boardId)
         .then(tasks => {
-          console.log(tasks)
           tasks.data.forEach(task => {
             if (!dict[task.listId]) {
               dict[task.listId] = []
             }
             dict[task.listId].push(task)
           })
-          console.log(dict)
           commit('setTasks', dict)
         })
     },
