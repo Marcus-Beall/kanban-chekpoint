@@ -35,10 +35,10 @@
                   <input class="inputs my-2" type="text" v-model="newUser.name" placeholder="Name" style="font-family: 'Share Tech Mono', monospace;">
                 </div>
                 <div class="col-12">
-                  <input class="inputs my-2" type="email" v-model="creds.email" placeholder="Email" style="font-family: 'Share Tech Mono', monospace;">
+                  <input class="inputs my-2" type="email" v-model="newUser.email" placeholder="Email" style="font-family: 'Share Tech Mono', monospace;">
                 </div>
                 <div class="col-12">
-                  <input class="inputs my-2" type="password" v-model="creds.password" placeholder="Password" style="font-family: 'Share Tech Mono', monospace;">
+                  <input class="inputs my-2" type="password" v-model="newUser.password" placeholder="Password" style="font-family: 'Share Tech Mono', monospace;">
                 </div>
               </div>
               <button @click="loginForm = !loginForm" type="button" class="btn loginbtn2 col-5" style="font-family: 'Share Tech Mono', monospace;">Login</button>
