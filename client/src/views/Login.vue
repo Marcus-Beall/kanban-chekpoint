@@ -105,6 +105,7 @@
     background-color: #FFFFFF;
     justify-content: center;
     margin-top: 34vh;
+    color: black;
   }
 
   .loginbtn2 {
@@ -114,7 +115,8 @@
     border: 5px solid #1B4E5F;
     background-color: #FFFFFF;
     justify-content: center;
-    margin-top: 28vh
+    margin-top: 28vh;
+    color: black;
   }
 
   .loginbtn:hover {
